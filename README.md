@@ -19,13 +19,13 @@ MVVM 可以在六角架構中作為 UI Layer 的一部分。可以將 MVVM 的 V
 - BISP.InfrastructureLayer：這個層級對應於六角架構中的適配器（Adapters）。它包含了所有與外部世界的交互，例如資料庫存取、檔案系統操作、網路請求等。
 - BISP.UI：這是應用程式的使用者介面（User interface）。會使用 MVVM 作為 UI 架構。
 
-# Project type
+## Project type
 - BISP.DomainLayer：Class Library
 - BISP.ApplicationLayer：Class Library
 - BISP.InfrastructureLayer：Class Library
 - BISP.UI：WPF Application
 
-# Project dependency diagram
+## Project dependency diagram
 - UI ["WPF MVVM"]
     - UI -->|Use Cases| A
 - A ["Application"]
@@ -35,7 +35,7 @@ MVVM 可以在六角架構中作為 UI Layer 的一部分。可以將 MVVM 的 V
 - I ["Infrastructure"]
     - I -->|Business Logic| D
 
-# Project uses the library:
+## Project uses the library:
 - BISP.UI
     - Microsoft.Extensions.Hosting
     - Microsoft.Extensions.DependencyInjection
