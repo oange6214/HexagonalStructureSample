@@ -1,21 +1,28 @@
 ﻿using BISP.ApplicationLayer;
 using BISP.DomainLayer;
+using BISP.UI.Commons;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace BISP.UI.ViewModels;
 
-public class ProductViewModel : INotifyPropertyChanged
+public class MainViewModel : INotifyPropertyChanged
 {
     private readonly IProductService _productService;
     private ObservableCollection<Product> _products;
+    private string _message;
 
-    public ProductViewModel(IProductService productService)
+
+    public MainViewModel(IProductService productService)
     {
+        UpdateMessageCommand = new RelayCommand(UpdateMessage);
         _productService = productService;
         LoadProducts();
     }
+
+    public ICommand UpdateMessageCommand { get; }
 
     public ObservableCollection<Product> Products
     {
@@ -25,6 +32,17 @@ public class ProductViewModel : INotifyPropertyChanged
             _products = value;
             OnPropertyChanged();
         }
+    }
+    public string Message
+    {
+        get { return _message; }
+        set { _message = value; OnPropertyChanged(); }
+    }
+
+    private void UpdateMessage()
+    {
+        var updatedMessage = DomainService.UpdateMessage();
+        Message = updatedMessage;
     }
 
     private async void LoadProducts()

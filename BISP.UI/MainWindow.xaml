@@ -11,17 +11,32 @@
     Height="450"
     mc:Ignorable="d">
 
-    <ListView ItemsSource="{Binding Products}">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn
-                    DisplayMemberBinding="{Binding Name}"
-                    Header="Product Name" />
-                <GridViewColumn
-                    DisplayMemberBinding="{Binding Price}"
-                    Header="Product Price" />
-                <!--  Add more columns as needed  -->
-            </GridView>
-        </ListView.View>
-    </ListView>
+    <Grid>
+        <StackPanel>
+            <ListView
+                Height="200"
+                ItemsSource="{Binding Products}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Name}"
+                            Header="Product Name" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Price}"
+                            Header="Product Price" />
+                        <!--  Add more columns as needed  -->
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <TextBlock
+                Margin="10"
+                FontSize="24"
+                Text="{Binding Message}" />
+            <Button
+                Margin="10"
+                Command="{Binding UpdateMessageCommand}"
+                Content="更新訊息" />
+        </StackPanel>
+    </Grid>
 </Window>

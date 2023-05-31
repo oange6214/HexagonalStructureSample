@@ -27,7 +27,7 @@ public partial class App : Application
         services.AddSingleton<AppDbContext>();
         services.AddSingleton<IProductRepository, ProductRepository>();
         services.AddSingleton<IProductService, ProductService>();
-        services.AddTransient<ProductViewModel>();
+        services.AddTransient<MainViewModel>();
         services.AddTransient<MainWindow>();
     }
 
@@ -39,7 +39,7 @@ public partial class App : Application
 
         var mainWindow = new MainWindow
         {
-            DataContext = _host.Services.GetRequiredService<ProductViewModel>()
+            DataContext = _host.Services.GetRequiredService<MainViewModel>()
         };
         mainWindow.Show();
     }
