@@ -27,9 +27,9 @@ public class ProductViewModel : INotifyPropertyChanged
         }
     }
 
-    private void LoadProducts()
+    private async void LoadProducts()
     {
-        var products = _productService.GetAllProducts();
+        var products = await _productService.GetAllProductsAsync();
         Products = new ObservableCollection<Product>(products);
     }
 

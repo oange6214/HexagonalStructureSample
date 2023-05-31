@@ -5,7 +5,7 @@ namespace BISP.InfrastructureLayer;
 
 public interface IProductRepository
 {
-    IEnumerable<Product> GetAll();
-    Product GetById(int id);
-    void Add(Product product);
+    Task<IEnumerable<Product>> GetAllAsync();
+    Task<Product> GetByIdAsync(int id);
+    Task AddAsync(Product product);
 }

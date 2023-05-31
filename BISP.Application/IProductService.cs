@@ -5,7 +5,7 @@ namespace BISP.ApplicationLayer;
 
 public interface IProductService
 {
-    IEnumerable<Product> GetAllProducts();
-    Product GetProductById(int id);
-    void AddProduct(Product product);
+    Task<IEnumerable<Product>> GetAllProductsAsync();
+    Task<Product> GetProductByIdAsync(int id);
+    Task AddProductAsync(Product product);
 }

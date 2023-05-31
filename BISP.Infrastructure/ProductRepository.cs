@@ -1,5 +1,6 @@
 ﻿
 using BISP.DomainLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace BISP.InfrastructureLayer;
 
@@ -12,19 +13,19 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
 
-    public IEnumerable<Product> GetAll()
+    public async Task<IEnumerable<Product>> GetAllAsync()
     {
-        return _context.Products.ToList();
+        return await _context.Products.ToListAsync();
     }
 
-    public Product GetById(int id)
+    public async Task<Product> GetByIdAsync(int id)
     {
-        return _context.Products.Find(id);
+        return await _context.Products.FindAsync(id);
     }
 
-    public void Add(Product product)
+    public async Task AddAsync(Product product)
     {
-        _context.Products.Add(product);
-        _context.SaveChanges();
+        await _context.Products.AddAsync(product);
+        await _context.SaveChangesAsync();
     }
 }
